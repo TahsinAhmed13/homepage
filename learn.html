@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>tahsin@stuy:~/learn.html</title>
+        <link rel="icon" href="https://cdn3.brettterpstra.com/uploads/2015/02/terminal-longshadow.png"/>
+        <style>
+            body { 
+                font-family: "Courier New", monospace; 
+                box-sizing: border-box;
+            }
+            img, #tutorial { 
+                width: 30%;
+                position: relative; 
+                left: 35vw; 
+                margin-bottom: 2em;  
+            }
+            #tutorial { 
+                width: 60%; 
+                position: relative; 
+                left: 20vw; 
+            }
+            p { 
+                font-size: 1.2em; 
+                line-height: 1.5em;
+            }
+            h2 { 
+                font-size: 2em; 
+            }
+            .commands { 
+                display: inline-block;
+                padding: 5px; 
+                background-color: peachpuff;
+                color: crimson; 
+                font-size: 1.5em; 
+            }
+            .examples { 
+                background-color: black; 
+                color: white; 
+                width: 90%; 
+                display: block;
+                padding: 5px 10px;
+                font-size: 1.5em;   
+            }
+            .tips, .note { 
+                border-top-left-radius: 2px; 
+                border-bottom-left-radius: 2px;
+                padding: 5px 10px; 
+                font-size: 1em;
+                width: 90%; 
+            }
+            .tips { 
+                background-color: lightblue; 
+                border-left: 10px solid cyan; 
+            }
+            .note { 
+                background-color: lightyellow; 
+                border-left: 10px solid yellow;
+            }
+        </style>
+        <script type="text/javascript" src="keys.js"></script>
+    </head>
+    <body>
+        <h1 style="text-align: center">Terminal Tutorial</h1>
+        <img src="https://cdn.pixabay.com/photo/2013/07/13/13/41/bash-161382_960_720.png"/>
+        <div id="tutorial" style="padding: 25px">
+            <p>I am taking an initiative by spreading terminal education to the world.</p>
+            <h2>Getting Started</h2>
+            <h3>*nix</h3>
+            <p>To open the terminal press <code>Crtl+Alt+T</code> on your keyboard.
+                Because this might accidentially open the terminal on your own computer
+                for this site you can use the <code>T</code> key to open the terminal at any time. 
+            </p>
+            <h3>Windows</h3>
+            <p>Windows does not come with bash as the default terminal program. 
+                Therefore to follow along on this guide you will have to install it, 
+                which can be done by installing a terminal program like <a href="https://www.cygwin.com/">Cygwin</a>.
+            </p>
+            <h2>Commands</h2>
+            <p>The terminal does not have a GUI, so you will have to use text commands to get around. 
+                You may be asking well why would I use this then? To that I can assure you that the terminal 
+                is more powerful than any GUI program in existence. Here is a list of the most useful commands for beginners.  
+            </p>
+            <p class="note"><b>Note</b>: the terminal emulator on this website isn't taht robust and supports only the first four commands</p>
+            <ol>
+                <li>
+                    <code class="commands">pwd</code><br/><br/>
+                    <code class="examples">> pwd</code>
+                    <p><u>Function</u>: prints the current working directory</p>
+                </li>
+                <li>
+                    <code class="commands">ls</code><br/><br/>
+                    <code class="examples">> ls</code>
+                    <p><u>Function</u>: lists all the files and directories under the current directory</p>
+                    <p class="tips"><b>Tip</b>: in blue are directories and in white are files</p>
+                </li>
+                <li>
+                    <code class="commands">cd</code><br/><br/>
+                    <code class="examples">> cd [directory]</code>
+                    <p><u>Args</u>: the directory you want to connect to</p>
+                    <p><u>Function</u>: connects to a given directory</p>
+                    <p class="tips"><b>Tip</b>: to get a file/dir deep inside the current dir use '/' between the dirs that your going through</p>
+                    <p class="tips"><b>Tip</b>: '.' is the current directory and '..' is the parent directory</p>
+                </li>
+                <li>
+                    <code class="commands">cat</code><br/><br/>
+                    <code class="examples">> cat [files...]</code>
+                    <p><u>Args</u>: can be up to any number of file names</p>
+                    <p><u>Function</u>: concatanates (joins) the contenets of all the files, but is commonly used to see the contents of one file</p>
+                </li>
+                <li>
+                    <code class="commands">mkdir</code><br/><br/>
+                    <code class="examples">> mkdir [name]</code>
+                    <p><u>Args</u>: the name of the directory</p>
+                    <p><u>Function</u>: makes a new directory in the current one</p>
+                </li>
+                <li>
+                    <code class="commands">rmdir</code><br/><br/>
+                    <code class="examples">> rmdir [name]</code>
+                    <p><u>Args</u>: the name of the directory</p>
+                    <p><u>Function</u>: removes a directory</p>
+                    <p class="tips"><b>Tip</b>: this only works on empty dirs, otherwise use <code>rm -rf [name]</code></p>
+                </li>
+                <li>
+                    <code class="commands">touch</code><br/><br/>
+                    <code class="examples">> touch [name]</code>
+                    <p><u>Args</u>: the name of the file</p>
+                    <p><u>Function</u>: creates a zero byte file</p>
+                </li>
+                <li>
+                    <code class="commands">rm</code><br/><br/>
+                    <code class="examples">> rm [name]</code>
+                    <p><u>Args</u>: the name of the file</p>
+                    <p><u>Function</u>: removes a file</p>
+                </li>
+                <li>
+                    <code class="commands">mv</code><br/><br/>
+                    <code class="examples">> mv [from] [to]</code>
+                    <p><u>Args</u>: where the file is currently located</p>
+                    <p><u>Args</u>: path where the file should go</p>
+                    <p><u>Function</u>: moves a file</p>
+                    <p class="tips"><b>Tip</b>: <code>mv</code> can also be used to rename if for the destation a new name is appended at the end</p> 
+                </li>
+                <li>
+                    <code class="commands">cp</code><br/><br/>
+                    <code class="examples">> cp [original] [new]</code>
+                    <p><u>Args</u>: where the file is current located</p>
+                    <p><u>Args</u>: path where it should be copied</p>
+                    <p><u>Function</u>: copies a file from one location to another</p>
+                    <p class="tips"><b>Tip</b>: the name can also be changed if at the end an alternate name is appended</p>
+                </li>
+            </ol>
+            <p class="note"><b>Note</b>: if you use <code>tab</code> after typing some portion of an args it will auto-complete</p>
+            <p class="note"><b>Note</b>: pressing the <code>UP</code> key will fetch the last called command</p>
+            <h2>More</h2>
+            <ul style="font-size: 1.5em">
+                <li><a href="http://overthewire.org/wargames/">overthewire</a> is a fun terminal game I play</li>
+                <li><a href="https://www.vim.org/">vim</a> is an amazing terminal text editor</li>
+                <li><a href="https://github.com/tmux/tmux/wiki">tumx</a> is the coolest terminal multiplexer</li>
+            </ul>
+        </div>
+    </body>
+</html>
