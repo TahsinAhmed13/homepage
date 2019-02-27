@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>tahsin@stuy:~/hobbies/video-games.html</title>
+        <link rel="icon" href="https://cdn3.brettterpstra.com/uploads/2015/02/terminal-longshadow.png"/>
+        <style>
+            body { 
+                font-family: "Courier New", monospace; 
+                box-sizing: border-box;
+                background-image: url("https://wallpapercave.com/wp/ftUbDhb.jpg");
+                background-repeat: no-repeat; 
+                background-size: cover;
+            }
+            img { 
+                position: relative; 
+                display: inline; 
+                left: 15vw; 
+                top: 5vh; 
+            }
+            p { 
+                position: relative; 
+                top: 5vh; 
+                width: 50vw; 
+                font-size: 2.5vh; 
+                line-height: 4vh; 
+                text-align: center; 
+            }
+            iframe { 
+                overflow: auto; 
+                position: relative; 
+                top: 5vh; 
+                width: 55vw; 
+                height: 55vh; 
+            }
+        </style>
+        <script type="text/javascript">
+            document.onkeydown = function(e) {
+                //go back to the terminal on press T 
+                if(e.keyCode == 84) { 
+                    var dir = document.title.substring(12, document.title.length); 
+                    localStorage.setItem("fromWhere", dir); 
+                    document.location.replace("../terminal.html");
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/269px-International_Pok%C3%A9mon_logo.svg.png"/>
+        <p>Now a days I don't really play too much video games, but back when I used to,
+            pokemon was one of my favorites. I still play it, but not nearly as much. When I 
+            do play, I mostly use the popular pkmn battle sim called pkmn showdown.   
+        </p>
+        <iframe src="https://pokemonshowdown.com/"></iframe>
+    </body>
+</html>

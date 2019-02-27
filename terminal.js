@@ -1,25 +1,30 @@
 var files = {
-    "~":["aboutme.html", "learn.html"]
+    "~":["aboutme.html", "learn.html"], 
+    "~/hobbies":["programming.html", "video-games.html"]
 }
 var dirs = {
-    "~":[]
+    "~":["hobbies"],
+    "~/hobbies":[]
 }
 var last = ""; 
 
 function execute(e) { 
+    var val = document.getElementById("command").value;
+    var dir = document.getElementById("dir").innerHTML;
     //pressing enter
-    if(e.keyCode == 13) { 
-        var val = document.getElementById("command").value;
-        var dir = document.getElementById("dir").innerHTML; 
+    if(e.keyCode == 13) {  
         if(val.substring(0, 3) == "pwd") { 
+            //pwd code
+            document.body.appendChild(document.createElement("br"));
             var current = document.createElement("span"); 
             current.innerHTML = document.getElementById("dir").innerHTML; 
-            current.style.fontSize = "4em"; 
+            current.style.fontSize = "6.625vh";
             current.style.color = "white";
             document.body.appendChild(current); 
             crtNewPrompt(document.getElementById("dir").innerHTML); 
         }else if(val.substring(0, 2) == "ls") { 
             //ls code here 
+            document.body.appendChild(document.createElement("br"));
             var items = ls(dir);
             for(var i = 0; i < items.length; i++) { 
                 var span = document.createElement("span"); 
@@ -29,7 +34,7 @@ function execute(e) {
                 }else { 
                     span.style.color = "lightblue"; 
                 }
-                span.style.fontSize = "4em"; 
+                span.style.fontSize = "6.625vh" 
                 document.body.appendChild(span); 
             } 
             crtNewPrompt(document.getElementById("dir").innerHTML); 
@@ -40,6 +45,7 @@ function execute(e) {
                 message("Invalid Directory"); 
             }else { 
                 crtNewPrompt(dir); 
+                document.title = "tahsin@stuy:" + dir; 
             } 
         }else if(val.substring(0, 3) == "cat") {
             //cat code here 
@@ -52,7 +58,30 @@ function execute(e) {
         }else { 
             message("Not a Command"); 
         }
-        last = val; 
+        last = val;
+    //pressing tab 
+    }else if(e.keyCode == 9) {
+        var command = ""; 
+        var arg = ""; 
+        var arr = []; 
+        if(val.substring(0, 2) == "cd") {
+            command = "cd";
+            arg = val.substring(3, val.length);
+            arr = dirs[dir]; 
+        }else if(val.substring(0, 3) == "cat") {
+            command = "cat"; 
+            arg = val.substring(4, val.length); 
+            arr = files[dir]; 
+        }
+        if(command.length > 0) {
+            var indecies = []; 
+            for(var i = 0; i < arr.length; i++) {
+                if(arg == arr[i].substring(0, arg.length)) {
+                    indecies.push(i);
+                }
+            } 
+            if(indecies.length == 1) {document.getElementById("command").value = command + " " + arr[indecies[0]];}
+        }
     }
 }
 
@@ -63,6 +92,8 @@ function ls(dir) {
 function cd(dir, arg) {
     if(arg == ".") { 
         return dir; 
+    }else if(arg == "..") {
+        return dir.substring(0, dir.lastIndexOf("/"));    
     }else if(dirs[dir].includes(arg)) { 
         return dir + "/" + arg; 
     }else { 
@@ -72,7 +103,11 @@ function cd(dir, arg) {
 
 function cat(dir, arg) { 
     if(files[dir].includes(arg)) { 
-        return arg;
+        if(dir == "~") {
+            return arg;
+        }else { 
+            return dir.substring(dir.indexOf("/") + 1, dir.length) + "/" + arg;  
+        }
     }else { 
         return null; 
     }
@@ -96,13 +131,14 @@ function crtNewPrompt(dir) {
     document.getElementById("dir").innerHTML = dir; 
     document.getElementById("command").disabled = false;
     document.getElementById("command").value = ""; 
-    document.getElementById("command").focus(); 
+    document.getElementById("command").focus();  
 }
 
 function message(str) { 
+    document.body.appendChild(document.createElement("br"));
     var text = document.createElement("span"); 
     text.innerHTML = str;
-    text.style.fontSize = "4em"; 
+    text.style.fontSize = "6.625vh"; 
     text.style.color = "white"; 
     document.body.appendChild(text); 
     crtNewPrompt(document.getElementById("dir").innerHTML);  

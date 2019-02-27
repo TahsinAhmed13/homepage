@@ -12,22 +12,22 @@
         overflow-y: auto;  
       } 
       #welcome-message { 
-        font-size: 8em; 
+        font-size: 13.2vh; 
         position: relative;
         left: 28vw;
         display: inline; 
       } 
       #terminal, .terminal_dead {
-        font-size: 4em;
-        position: relative;   
+        font-size: 6.625vh; 
+        position: relative; 
       }
       #command, .command_dead { 
           background-color: transparent;
         	color: white; 
         	border: none; 
         	outline: none;
-          width: 70vw; 
-        	font-size: 0.75em;
+          width: 40%; 
+          font-size: 6vh;  
       }
     </style>
     <script type="text/javascript" src="terminal.js"></script>
@@ -37,12 +37,12 @@
       Hello World!<br>
       Its me Tahsin<br>
     </h1>
-    <span id="terminal"> 
+    <span id="terminal">
       <span>tahsin@stuy</span><!--
       --><span style="color:white">:</span><!--
       --><span style="color:lightblue" id="dir">~</span><!--
       --><span style="color:white">$</span>
-      <input type="text" name="command" id="command" onkeypress="execute(event)" spellcheck="false"> 
+      <input type="text" name="command" id="command" onkeydown="execute(event)" spellcheck="false"> 
     </span>
     <script type="text/javascript">
       var fromWhere = localStorage.getItem("fromWhere"); 

@@ -7,12 +7,11 @@
             body { 
                 background-color: #141414; 
                 color: white;
-                font-family: "Courier New", monospace;  
+                font-family: "Courier New", monospace; 
+                box-sizing: border-box;  
             }
             #main{ 
                 position: relative; 
-                max-width: 60vw;
-                max-height: 60vh; 
                 width: 60vw; 
                 height: 60vh; 
                 top: 20vh; 
@@ -25,9 +24,9 @@
                 height: 100%; 
             }
             #info p { 
-                font-size: 1.2em; 
+                font-size: 2.5vh; 
                 margin: 20px; 
-                line-height: 1.8em; 
+                line-height: 3.75vh;  
             }
             img { 
                 float: right; 
@@ -38,7 +37,16 @@
                 right: 7.5%;  
             }
         </style>
-        <script type="text/javascript" src="keys.js"></script>
+        <script type="text/javascript">
+            document.onkeydown = function(e) {
+                //go back to the terminal on press T 
+                if(e.keyCode == 84) { 
+                    var dir = document.title.substring(12, document.title.length); 
+                    localStorage.setItem("fromWhere", dir); 
+                    document.location.replace("terminal.html");
+                }
+            }
+        </script>
     </head>
     <body>
         <div id="main">

@@ -57,11 +57,20 @@
                 border-left: 10px solid yellow;
             }
         </style>
-        <script type="text/javascript" src="keys.js"></script>
+        <script type="text/javascript">
+            document.onkeydown = function(e) {
+                //go back to the terminal on press T 
+                if(e.keyCode == 84) { 
+                    var dir = document.title.substring(12, document.title.length); 
+                    localStorage.setItem("fromWhere", dir); 
+                    document.location.replace("terminal.html");
+                }
+            }
+        </script>
     </head>
     <body>
         <h1 style="text-align: center">Terminal Tutorial</h1>
-        <img src="https://cdn.pixabay.com/photo/2013/07/13/13/41/bash-161382_960_720.png"/>
+        <img src="https://www.iconattitude.com/icons/open_icon_library/apps/png/256/utilities-terminal-4.png"/>
         <div id="tutorial" style="padding: 25px">
             <p>I am taking an initiative by spreading terminal education to the world.</p>
             <h2>Getting Started</h2>
@@ -80,7 +89,7 @@
                 You may be asking well why would I use this then? To that I can assure you that the terminal 
                 is more powerful than any GUI program in existence. Here is a list of the most useful commands for beginners.  
             </p>
-            <p class="note"><b>Note</b>: the terminal emulator on this website isn't taht robust and supports only the first four commands</p>
+            <p class="note"><b>Note</b>: the terminal emulator on this website isn't that robust and supports only the first four commands</p>
             <ol>
                 <li>
                     <code class="commands">pwd</code><br/><br/>
