@@ -43,6 +43,7 @@ function execute(e) {
             var dir = cd(dir, val.substring(3, val.length));
             if(dir == null) { 
                 message("Invalid Directory"); 
+                crtNewPrompt(dir);
             }else { 
                 crtNewPrompt(dir); 
                 document.title = "tahsin@stuy:" + dir; 
@@ -52,11 +53,22 @@ function execute(e) {
             var url = cat(dir, val.substring(4, val.length)); 
             if(url == null) { 
                 message("Invaild File"); 
+                crtNewPrompt(dir);
             }else { 
                 document.location.replace(url);
             }
+        }else if(val.substring(0, 6) == "--help") {
+            message("pwd: print working directory"); 
+            message("ls: see contents of directory"); 
+            message("cd: going into a sub directory"); 
+            message("cat: used to view files"); 
+            message("press t on any page to get back here"); 
+            message("type 'cat learn.html' for more info");
+            crtNewPrompt(dir);
         }else { 
-            message("Not a Command"); 
+            message("Not a Command");
+            message("Type --help for help");
+            crtNewPrompt(dir); 
         }
         last = val;
     //pressing tab 
@@ -140,8 +152,7 @@ function message(str) {
     text.innerHTML = str;
     text.style.fontSize = "6.625vh"; 
     text.style.color = "white"; 
-    document.body.appendChild(text); 
-    crtNewPrompt(document.getElementById("dir").innerHTML);  
+    document.body.appendChild(text);   
 }
 
 document.onkeydown = function(e) {
