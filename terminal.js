@@ -16,26 +16,22 @@ function execute(e) {
         if(val.substring(0, 3) == "pwd") { 
             //pwd code
             document.body.appendChild(document.createElement("br"));
-            var current = document.createElement("span"); 
-            current.innerHTML = document.getElementById("dir").innerHTML; 
-            current.style.fontSize = "6.625vh";
-            current.style.color = "white";
-            document.body.appendChild(current); 
+            message(document.getElementById("dir").innerHTML);
             crtNewPrompt(document.getElementById("dir").innerHTML); 
         }else if(val.substring(0, 2) == "ls") { 
             //ls code here 
             document.body.appendChild(document.createElement("br"));
             var items = ls(dir);
             for(var i = 0; i < items.length; i++) { 
-                var span = document.createElement("span"); 
-                span.innerHTML = items[i] + " ";  
+                var contents = document.createElement("span"); 
+                contents.innerHTML = items[i] + " ";  
                 if(items[i].includes(".")) { 
-                    span.style.color = "white"; 
+                    contents.style.color = "white"; 
                 }else { 
-                    span.style.color = "lightblue"; 
+                    contents.style.color = "lightblue"; 
                 }
-                span.style.fontSize = "6.625vh" 
-                document.body.appendChild(span); 
+                contents.style.fontSize = "6.625vh" 
+                document.body.appendChild(contents); 
             } 
             crtNewPrompt(document.getElementById("dir").innerHTML); 
         }else if(val.substring(0, 2) == "cd") {
@@ -67,7 +63,7 @@ function execute(e) {
             crtNewPrompt(dir);
         }else { 
             message("Not a Command");
-            message("Type --help for help");
+            message("Type '--help' for help");
             crtNewPrompt(dir); 
         }
         last = val;
